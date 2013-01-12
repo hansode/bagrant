@@ -1,0 +1,69 @@
+[disk]
+
+rootsize = 4096
+bootsize =
+optszie  =
+swapsize = 1024
+homesize =
+usrsize  =
+varsize  =
+tmpsize  =
+
+[distro]
+
+distro_arch = x86_64
+distro_name = centos
+distro_ver  = 6
+
+keepcache   = 0
+selinux     = 0
+
+hostname    = centos6
+
+rootpass    = root
+devel_user  = centos
+devel_pass  = centos
+
+ssh_key       =
+ssh_user_key  =
+sshd_passauth = yes
+
+fstab_type  = label
+
+copy        = vmconfig/copy.txt
+execscript  = vmconfig/execscript.sh
+firstboot   = vmconfig/firstboot.sh
+firstlogin  = vmconfig/firstlogin.sh
+
+addpkg      = vim-minimal screen git make sudo ntp ntpdate ; don't use "," as delimiter.
+
+nictab      = vmconfig/nictab.txt
+routetab    = vmconfig/routetab.txt
+
+[hypervisor]
+
+hypervisor = kvm; [ kvm lxc openvz ]
+viftab     = vmconfig/viftab.txt
+
+[kvm]
+
+name         = centos6
+raw          = ./box-disk1.raw
+
+cpu_num      = 1
+mem_size     = 1024
+
+vnc_addr     =  ; 127.0.0.1
+vnc_port     =  ; 101
+
+serial_addr  =  ; 127.0.0.1
+serial_port  =  ; 5555
+
+monitor_addr =  ; 127.0.0.1
+monitor_port =  ; 4444
+
+[lxc]
+
+name       = centos6
+diskless   = 1
+rootfs_dir = box-disk1

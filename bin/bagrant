@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# description:
+#  tool for building complete development environments
+#
+# requires:
+#  bash, pwd
+#  vmbuilder/kvm/rhel/6/misc/kvm-ctl.sh
+#  vmbuilder/kvm/rhel/6/misc/openvz-ctl.sh
+#  vmbuilder/kvm/rhel/6/misc/lxc-ctl.sh
+#
+# import:
+#  vm: create_vm
+#
+set -e
+
+## variables
+
+### read-only variables
+
+readonly abs_dirname=$(cd ${BASH_SOURCE[0]%/*} && pwd)
+readonly vmbuilder_lib_path=${abs_dirname}/../vmbuilder/kvm/rhel/6/functions
+readonly bagrant_lib_path=${abs_dirname}/../functions
+
+### include files
+
+. ${vmbuilder_lib_path}/utils.sh
+. ${vmbuilder_lib_path}/disk.sh
+. ${vmbuilder_lib_path}/mbr.sh
+. ${vmbuilder_lib_path}/distro.sh
+. ${vmbuilder_lib_path}/hypervisor.sh
+. ${vmbuilder_lib_path}/vm.sh
+. ${vmbuilder_lib_path}/inifile.sh
+. ${bagrant_lib_path}/bagrant.sh
+
+### prepare
+
+extract_args $*
+
+## main
+
+declare cmd="$(echo ${CMD_ARGS} | sed "s, ,\n,g" | head -1)"
+
+bagrant_cli "${cmd}"
