@@ -207,6 +207,15 @@ function install_vm_firstboot() {
   [[ -f "${file_path}" ]] || render_vm_firstboot > ${file_path}
 }
 
+function setup_optional_dir() {
+  add_option_bagrant
+  [[ -d "${vmconfig_dir}" ]] || mkdir -p ${vmconfig_dir}
+  [[ -d "${cache_dir}"    ]] || mkdir -p ${cache_dir}
+  install_vm_config ${vmconfig_path}
+}
+
+## bagrant
+
 function bagrant_box() {
   # via http://jazstudios.blogspot.jp/2012/03/basic-vagrant-usage.html
   # cd ~/.vagrant.d/
@@ -218,8 +227,6 @@ function bagrant_box() {
   echo box $*
 }
 
-## bagrant
-
 function bagrant_init() {
   #
   # cd ~/Sites/VM/test/
@@ -229,12 +236,8 @@ function bagrant_init() {
   [[ -f "${bagrantfile_path}" ]] || cp  ${BASH_SOURCE[0]%/*}/../examples/Bagrantfile ${bagrantfile_path}
   echo "[INFO] Created ${bagrantfile_path}"
 
-  add_option_bagrant
+  setup_optional_dir
 
-  [[ -d "${vmconfig_dir}" ]] || mkdir -p ${vmconfig_dir}
-  [[ -d "${cache_dir}"    ]] || mkdir -p ${cache_dir}
-
-  install_vm_config     ${vmconfig_path}
   install_vm_nictab     ${vmconfig_dir}/nictab.txt
   install_vm_viftab     ${vmconfig_dir}/viftab.txt
   install_vm_copyfile   ${vmconfig_dir}/copy.txt
@@ -275,11 +278,9 @@ function bagrant_cli() {
     ;;
   init|build|up|console|halt)
     register_options_bagrant
+    setup_optional_dir
 
-    case "${cmd}" in
-    init) ;;
-    *)    . ${vmconfig_path} ;;
-    esac
+    . ${vmconfig_path}
 
     eval bagrant_${cmd}
     ;;
