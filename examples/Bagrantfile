@@ -1,6 +1,6 @@
 [disk]
 
-xpart = vmconfig/xpart.txt
+xpart = ; vmconfig/xpart.txt
 
 [distro]
 
@@ -11,7 +11,7 @@ distro_ver  = 6
 keepcache   = 0
 selinux     = 0
 
-hostname    = centos6
+hostname    = bagrant
 
 rootpass    = root
 devel_user  = bagrant
@@ -23,20 +23,20 @@ sshd_passauth = yes
 
 fstab_type  = label
 
-copy        = vmconfig/copy.txt
-execscript  = vmconfig/execscript.sh
-firstboot   = vmconfig/firstboot.sh
-firstlogin  = vmconfig/firstlogin.sh
+copy        = ; vmconfig/copy.txt
+execscript  = ; vmconfig/execscript.sh
+firstboot   = ; vmconfig/firstboot.sh
+firstlogin  = ; vmconfig/firstlogin.sh
 
 addpkg      = vim-minimal screen git make sudo ntp ntpdate ; don't use "," as delimiter.
 
-nictab      = vmconfig/nictab.txt
-routetab    = vmconfig/routetab.txt
+nictab      = ; vmconfig/nictab.txt
+routetab    = ; vmconfig/routetab.txt
 
 [hypervisor]
 
-hypervisor = kvm; [ kvm lxc openvz ]
-viftab     = vmconfig/viftab.txt
+hypervisor = kvm
+viftab     = ; vmconfig/viftab.txt
 
 [kvm]
 
@@ -54,9 +54,3 @@ serial_port  =  ; 5555
 
 monitor_addr =  ; 127.0.0.1
 monitor_port =  ; 4444
-
-[lxc]
-
-name       = centos6
-diskless   = 1
-rootfs_dir = box-disk1
