@@ -1,6 +1,6 @@
 [disk]
 
-xpart = ; vmconfig/xpart.txt
+xpart = vmconfig/xpart.txt
 
 [distro]
 

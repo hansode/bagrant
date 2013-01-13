@@ -99,7 +99,7 @@ function render_vm_xpart() {
 	# /boot  128
 	root    4096
 	# /opt  1024
-	swap       0
+	swap    1024
 	# /home 1024
 	# /usr  1024
 	# /var  1024
