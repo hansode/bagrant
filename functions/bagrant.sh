@@ -17,8 +17,8 @@
 function register_options_bagrant() {
   bagrantfile_path=${bagrantfile_path:-./Bagrantfile}
   vmconfig_dir=./vmconfig
-  cache_dir=./cache
-  vmconfig_path=${cache_dir}/vmbulder.conf
+  vmcache_dir=./vmcache
+  vmconfig_path=${vmcache_dir}/vmbulder.conf
 }
 
 function add_option_bagrant() {
@@ -223,7 +223,7 @@ function install_vm_firstboot() {
 function setup_optional_dir() {
   [[ ! -f "${bagrantfile_path}" ]] || add_option_bagrant
   [[ -d "${vmconfig_dir}" ]] || mkdir -p ${vmconfig_dir}
-  [[ -d "${cache_dir}"    ]] || mkdir -p ${cache_dir}
+  [[ -d "${vmcache_dir}"  ]] || mkdir -p ${vmcache_dir}
   install_vm_config ${vmconfig_path}
 }
 
@@ -262,7 +262,7 @@ function bagrant_init() {
 }
 
 function bagrant_build() {
-  distro_dir=./cache/${distro_name}-${distro_ver}_${distro_arch}
+  distro_dir=${vmcache_dir}/${distro_name}-${distro_ver}_${distro_arch}
   create_vm
 }
 
