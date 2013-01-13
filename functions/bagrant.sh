@@ -39,14 +39,7 @@ function add_option_bagrant() {
 
 function render_vm_config() {
   local disk_params="
-    rootsize
-    bootsize
-    optszie
-    swapsize
-    homesize
-    usrsize
-    varsize
-    tmpsize
+    xpart
   "
   local distro_params="
     distro_arch
@@ -99,6 +92,19 @@ function render_vm_config() {
 
   echo raw=./box-disk1.raw
   echo image_path=\${raw}
+}
+
+function render_vm_xpart() {
+  cat <<-'EOS'
+	# /boot  128
+	root    4096
+	# /opt  1024
+	swap       0
+	# /home 1024
+	# /usr  1024
+	# /var  1024
+	# /tmp  1024
+	EOS
 }
 
 function render_vm_nictab() {
@@ -158,6 +164,13 @@ function render_vm_firstboot() {
 
 ## installing files
 
+function install_vm_xpart() {
+  local file_path=$1
+  [[ -n "${file_path}" ]] || { echo "[ERROR] Invalid argument: file_path:${file_path} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
+
+  render_vm_xpart > ${file_path}
+}
+
 function install_vm_config() {
   local file_path=$1
   [[ -n "${file_path}" ]] || { echo "[ERROR] Invalid argument: file_path:${file_path} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
@@ -208,7 +221,7 @@ function install_vm_firstboot() {
 }
 
 function setup_optional_dir() {
-  add_option_bagrant
+  [[ ! -f "${bagrantfile_path}" ]] || add_option_bagrant
   [[ -d "${vmconfig_dir}" ]] || mkdir -p ${vmconfig_dir}
   [[ -d "${cache_dir}"    ]] || mkdir -p ${cache_dir}
   install_vm_config ${vmconfig_path}
@@ -238,6 +251,7 @@ function bagrant_init() {
 
   setup_optional_dir
 
+  install_vm_xpart      ${vmconfig_dir}/xpart.txt
   install_vm_nictab     ${vmconfig_dir}/nictab.txt
   install_vm_viftab     ${vmconfig_dir}/viftab.txt
   install_vm_copyfile   ${vmconfig_dir}/copy.txt

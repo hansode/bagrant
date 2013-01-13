@@ -12,17 +12,8 @@
 
 ## functions
 
-function setUp() {
-  register_options_bagrant
-}
-
-function tearDown() {
-  rm -rf cache
-  rm -rf vmconfig
-}
-
-function test_bagrant_init() {
-  bagrant_init >/dev/null
+function test_render_vm_xpart() {
+  render_vm_xpart | egrep -q -w ^root
   assertEquals $? 0
 }
 

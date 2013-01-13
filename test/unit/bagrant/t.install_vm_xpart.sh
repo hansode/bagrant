@@ -10,19 +10,16 @@
 
 ## variables
 
+declare vmxpart_path=${abs_dirname}/vmxpart.$$
+
 ## functions
 
-function setUp() {
-  register_options_bagrant
-}
-
 function tearDown() {
-  rm -rf cache
-  rm -rf vmconfig
+  rm -f ${vmxpart_path}
 }
 
-function test_bagrant_init() {
-  bagrant_init >/dev/null
+function test_install_vm_xpart() {
+  install_vm_xpart ${vmxpart_path}
   assertEquals $? 0
 }
 
