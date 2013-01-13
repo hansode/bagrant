@@ -33,8 +33,8 @@ Directory Structure
 ### variables
 
 + box-disk1.raw
-+ cache/vmbuilder.conf
-+ cache/${distro_name}-${distro_ver}_${distro_arch}
++ vmcache/vmbuilder.conf
++ vmcache/${distro_name}-${distro_ver}_${distro_arch}
 
 Bagrantfile
 -----------
