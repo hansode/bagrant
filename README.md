@@ -14,6 +14,20 @@ $ bagrant console
 $ bagrant halt
 ```
 
+Installation
+------------
+
+```
+$ mkdir /opt/hansode
+$ cd    /opt/hansode
+
+$ git clone https://github.com/hansode/bagrant.git
+$ cd bagrant
+
+$ git submodule init
+$ git submodule update
+```
+
 Directory Structure
 -------------------
 
