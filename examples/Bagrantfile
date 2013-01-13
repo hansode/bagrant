@@ -14,8 +14,8 @@ selinux     = 0
 hostname    = centos6
 
 rootpass    = root
-devel_user  = centos
-devel_pass  = centos
+devel_user  = bagrant
+devel_pass  = bagrant
 
 ssh_key       =
 ssh_user_key  =
