@@ -1,13 +1,6 @@
 [disk]
 
-rootsize = 4096
-bootsize =
-optszie  =
-swapsize = 1024
-homesize =
-usrsize  =
-varsize  =
-tmpsize  =
+xpart = ; vmconfig/xpart.txt
 
 [distro]
 
