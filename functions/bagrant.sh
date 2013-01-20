@@ -87,7 +87,7 @@ function render_vm_config() {
   local key i
   for i in ${disk_params} ${distro_params} ${hypervisor_params} ${kvm_params} ${lxc_params}; do
     eval key=\$${i}
-    printf "%s=\"%s\"\n" ${i} ${key}
+    printf "%s=\"%s\"\n" ${i} "${key}"
   done
 
   echo raw=./box-disk1.raw
