@@ -56,6 +56,7 @@ function render_vm_config() {
     sshd_passauth
     fstab_type
     copy
+    copydir
     execscript
     firstboot
     firstlogin
