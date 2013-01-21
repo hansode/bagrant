@@ -54,6 +54,7 @@ function render_vm_config() {
     ssh_key
     ssh_user_key
     sshd_passauth
+    sudo_requiretty
     fstab_type
     copy
     copydir
