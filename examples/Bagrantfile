@@ -50,6 +50,7 @@ viftab=  # vmconfig/viftab.txt
 
 name=centos6
 raw=./box-disk1.raw
+image_path=${raw}
 
 cpu_num=1
 mem_size=1024
