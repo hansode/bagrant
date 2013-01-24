@@ -15,7 +15,7 @@
 function tearDown() {
   rm -f  Bagrantfile
   rm -f  box-disk1.raw
-  rm -rf cache
+  rm -rf vmcache
   rm -rf vmconfig
 }
 

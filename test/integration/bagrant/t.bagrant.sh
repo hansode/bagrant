@@ -19,7 +19,7 @@ function setUp() {
 
 function tearDown() {
   rm -f Bagrantfile
-  rm -rf cache
+  rm -rf vmcache
   rm -rf vmconfig
 }
 

@@ -17,7 +17,7 @@ function setUp() {
 }
 
 function tearDown() {
-  rm -rf cache
+  rm -rf vmcache
   rm -rf vmconfig
 }
 
