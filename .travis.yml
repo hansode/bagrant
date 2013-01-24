@@ -2,3 +2,4 @@
 language: c
 script: make test
 install: make
+before_install: make
