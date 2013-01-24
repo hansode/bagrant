@@ -18,7 +18,6 @@ function register_options_bagrant() {
   bagrantfile_path=${bagrantfile_path:-./Bagrantfile}
   vmconfig_dir=./vmconfig
   vmcache_dir=./vmcache
-  vmconfig_path=${vmcache_dir}/vmbulder.conf
 }
 
 function add_option_bagrant() {
@@ -195,15 +194,15 @@ function bagrant_build() {
 }
 
 function bagrant_up() {
-  $(hypervisor_controller_path) start --config-path=${vmconfig_path}
+  $(hypervisor_controller_path) start --config-path=${bagrantfile_path}
 }
 
 function bagrant_halt() {
-  $(hypervisor_controller_path) stop --config-path=${vmconfig_path}
+  $(hypervisor_controller_path) stop --config-path=${bagrantfile_path}
 }
 
 function bagrant_console() {
-  $(hypervisor_controller_path) console --config-path=${vmconfig_path}
+  $(hypervisor_controller_path) console --config-path=${bagrantfile_path}
 }
 
 function hypervisor_controller_path() {
