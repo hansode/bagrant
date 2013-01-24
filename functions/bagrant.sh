@@ -22,79 +22,13 @@ function register_options_bagrant() {
 }
 
 function add_option_bagrant() {
-  local section
-  while read section; do
-    eval_ini ${bagrantfile_path} ${section}
-  done < <(cat <<-EOS | egrep -v '^#|^$'
-	disk
-	distro
-	hypervisor
-	EOS
-        )
+  . ${bagrantfile_path}
 
-  eval_ini ${bagrantfile_path} ${hypervisor}
+  raw=${raw:-./box-disk1.raw}
+  image_path=${raw}
 }
 
 ## renderering
-
-function render_vm_config() {
-  local disk_params="
-    xpart
-  "
-  local distro_params="
-    distro_arch
-    distro_name
-    distro_ver
-    keepcache
-    selinux
-    hostname
-    rootpass
-    devel_user
-    devel_pass
-    ssh_key
-    ssh_user_key
-    sshd_passauth
-    sudo_requiretty
-    fstab_type
-    copy
-    copydir
-    execscript
-    firstboot
-    firstlogin
-    addpkg
-    nictab
-    routetab
-  "
-  local hypervisor_params="
-    hypervisor
-    viftab
-  "
-  local kvm_params="
-    name
-    cpu_num
-    mem_size
-    vnc_addr
-    vnc_port
-    serial_addr
-    serial_port
-    monitor_addr
-    monitor_port
-  "
-  local lxc_params="
-    name
-    diskless
-    rootfs_dir
-  "
-
-  local key i
-  for i in ${disk_params} ${distro_params} ${hypervisor_params} ${kvm_params} ${lxc_params}; do
-    eval key=\$${i}
-    printf "%s=\"%s\"\n" ${i} "${key}"
-  done
-
-  echo raw=./box-disk1.raw
-  echo image_path=\${raw}
-}
 
 function render_vm_xpart() {
   cat <<-'EOS'
@@ -173,13 +107,6 @@ function install_vm_xpart() {
   render_vm_xpart > ${file_path}
 }
 
-function install_vm_config() {
-  local file_path=$1
-  [[ -n "${file_path}" ]] || { echo "[ERROR] Invalid argument: file_path:${file_path} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
-
-  render_vm_config > ${file_path}
-}
-
 function install_vm_nictab() {
   local file_path=$1
   [[ -n "${file_path}" ]] || { echo "[ERROR] Invalid argument: file_path:${file_path} (${BASH_SOURCE[0]##*/}:${LINENO})" >&2; return 1; }
@@ -226,7 +153,6 @@ function setup_optional_dir() {
   [[ ! -f "${bagrantfile_path}" ]] || add_option_bagrant
   [[ -d "${vmconfig_dir}" ]] || mkdir -p ${vmconfig_dir}
   [[ -d "${vmcache_dir}"  ]] || mkdir -p ${vmcache_dir}
-  install_vm_config ${vmconfig_path}
 }
 
 ## bagrant
@@ -295,8 +221,6 @@ function bagrant_cli() {
   init|build|up|console|halt)
     register_options_bagrant
     setup_optional_dir
-
-    . ${vmconfig_path}
 
     eval bagrant_${cmd}
     ;;

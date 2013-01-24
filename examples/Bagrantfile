@@ -1,56 +1,64 @@
-[disk]
+#
+# [disk]
+#
 
-xpart = ; vmconfig/xpart.txt
+xpart= # vmconfig/xpart.txt
 
-[distro]
+#
+# [distro]
+#
 
-distro_arch = x86_64
-distro_name = centos
-distro_ver  = 6
+distro_arch=x86_64
+distro_name=centos
+distro_ver=6
 
-keepcache   = 0
-selinux     = 0
+keepcache=0
+selinux=0
 
-hostname    = bagrant
+hostname=bagrant
 
-rootpass    = root
-devel_user  = bagrant
-devel_pass  = bagrant
+rootpass=root
+devel_user=bagrant
+devel_pass=bagrant
 
-ssh_key       =
-ssh_user_key  =
-sshd_passauth = yes
+ssh_key=
+ssh_user_key=
+sshd_passauth=yes
 
-fstab_type  = label
+fstab_type=label
 
-copy        = ; vmconfig/copy.txt
-execscript  = ; vmconfig/execscript.sh
-firstboot   = ; vmconfig/firstboot.sh
-firstlogin  = ; vmconfig/firstlogin.sh
+copy=       # vmconfig/copy.txt
+execscript= # vmconfig/execscript.sh
+firstboot=  # vmconfig/firstboot.sh
+firstlogin= # vmconfig/firstlogin.sh
 
-addpkg      = vim-minimal screen git make sudo ntp ntpdate ; don't use "," as delimiter.
+addpkg="vim-minimal screen git make sudo ntp ntpdate"
 
-nictab      = ; vmconfig/nictab.txt
-routetab    = ; vmconfig/routetab.txt
+nictab=   # vmconfig/nictab.txt
+routetab= # vmconfig/routetab.txt
 
-[hypervisor]
+#
+# [hypervisor]
+#
 
-hypervisor = kvm
-viftab     = ; vmconfig/viftab.txt
+hypervisor=kvm
+viftab=  # vmconfig/viftab.txt
 
-[kvm]
+#
+# [kvm]
+#
 
-name         = centos6
-raw          = ./box-disk1.raw
+name=centos6
+raw=./box-disk1.raw
 
-cpu_num      = 1
-mem_size     = 1024
+cpu_num=1
+mem_size=1024
 
-vnc_addr     =  ; 127.0.0.1
-vnc_port     =  ; 101
+vnc_addr= # ; 127.0.0.1
+vnc_port= # ; 101
 
-serial_addr  =  ; 127.0.0.1
-serial_port  =  ; 5555
+serial_addr= # ; 127.0.0.1
+serial_port= # ; 5555
 
-monitor_addr =  ; 127.0.0.1
-monitor_port =  ; 4444
+monitor_addr= # ; 127.0.0.1
+monitor_port= # ; 4444
