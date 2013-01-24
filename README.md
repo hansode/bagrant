@@ -1,6 +1,8 @@
 Bagrant
 =======
 
+[![Build Status](https://travis-ci.org/hansode/bagrant.png)](https://travis-ci.org/hansode/bagrant)
+
 Bagrant is a kind of bash implementation of [Vagrant](http://www.vagrantup.com).
 
 Getting Started
