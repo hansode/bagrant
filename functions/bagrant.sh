@@ -22,9 +22,6 @@ function register_options_bagrant() {
 
 function add_option_bagrant() {
   . ${bagrantfile_path}
-
-  raw=${raw:-./box-disk1.raw}
-  image_path=${raw}
 }
 
 ## renderering
