@@ -26,8 +26,7 @@ $ cd    /opt/hansode
 $ git clone https://github.com/hansode/bagrant.git
 $ cd bagrant
 
-$ git submodule init
-$ git submodule update
+$ make
 ```
 
 Directory Structure
