@@ -14,14 +14,15 @@
 #  vm: create_vm
 #
 
+BAGRANTFILE_PATH=${BAGRANTFILE_PATH:-./Bagrantfile}
+
 function register_options_bagrant() {
-  bagrantfile_path=${bagrantfile_path:-./Bagrantfile}
   vmconfig_dir=./vmconfig
   vmcache_dir=./vmcache
 }
 
 function add_option_bagrant() {
-  . ${bagrantfile_path}
+  . ${BAGRANTFILE_PATH}
 }
 
 ## renderering
@@ -146,7 +147,7 @@ function install_vm_firstboot() {
 }
 
 function setup_optional_dir() {
-  [[ ! -f "${bagrantfile_path}" ]] || add_option_bagrant
+  [[ ! -f "${BAGRANTFILE_PATH}" ]] || add_option_bagrant
   [[ -d "${vmconfig_dir}" ]] || mkdir -p ${vmconfig_dir}
   [[ -d "${vmcache_dir}"  ]] || mkdir -p ${vmcache_dir}
 }
@@ -170,8 +171,8 @@ function bagrant_init() {
   # bagrant init
   # bagrant init [name]
   #
-  [[ -f "${bagrantfile_path}" ]] || cp  ${BASH_SOURCE[0]%/*}/../examples/Bagrantfile ${bagrantfile_path}
-  echo "[INFO] Created ${bagrantfile_path}"
+  [[ -f "${BAGRANTFILE_PATH}" ]] || cp  ${BASH_SOURCE[0]%/*}/../examples/Bagrantfile ${BAGRANTFILE_PATH}
+  echo "[INFO] Created ${BAGRANTFILE_PATH}"
 
   setup_optional_dir
 
@@ -191,15 +192,15 @@ function bagrant_build() {
 }
 
 function bagrant_up() {
-  $(hypervisor_controller_path) start --config-path=${bagrantfile_path}
+  $(hypervisor_controller_path) start --config-path=${BAGRANTFILE_PATH}
 }
 
 function bagrant_halt() {
-  $(hypervisor_controller_path) stop --config-path=${bagrantfile_path}
+  $(hypervisor_controller_path) stop --config-path=${BAGRANTFILE_PATH}
 }
 
 function bagrant_console() {
-  $(hypervisor_controller_path) console --config-path=${bagrantfile_path}
+  $(hypervisor_controller_path) console --config-path=${BAGRANTFILE_PATH}
 }
 
 function hypervisor_controller_path() {
