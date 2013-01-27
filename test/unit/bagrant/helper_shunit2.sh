@@ -23,6 +23,6 @@ readonly shunit2_file=${abs_dirname}/../../shunit2
 
 ## group variables
 
-bagrantfile_path=${abs_dirname}/../../../examples/Bagrantfile
+BAGRANTFILE_PATH=${abs_dirname}/../../../examples/Bagrantfile
 
 ## group functions
