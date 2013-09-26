@@ -20,7 +20,7 @@ function tearDown() {
 
 function test_install_vm_firstlogin() {
   install_vm_firstlogin ${vmfirstlogin_path}
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

@@ -14,7 +14,7 @@
 
 function test_bagrant_box() {
   bagrant_box >/dev/null
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

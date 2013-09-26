@@ -14,7 +14,7 @@
 
 function test_render_vm_nictab() {
   render_vm_nictab | egrep -w -q ^ifname=eth0
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

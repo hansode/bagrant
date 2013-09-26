@@ -20,7 +20,7 @@ function tearDown() {
 
 function test_install_vm_nictab() {
   install_vm_nictab ${vmnictab_path}
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

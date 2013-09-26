@@ -18,7 +18,7 @@ function setUp() {
 
 function test_add_option_bagrant() {
   add_option_bagrant >/dev/null
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

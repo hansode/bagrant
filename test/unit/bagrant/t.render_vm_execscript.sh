@@ -14,7 +14,7 @@
 
 function test_render_vm_execscript() {
   render_vm_execscript > /dev/null
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

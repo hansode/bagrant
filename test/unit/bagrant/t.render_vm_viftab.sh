@@ -14,7 +14,7 @@
 
 function test_render_vm_viftab() {
   render_vm_viftab | egrep -q -w ^bagrant-eth0
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2
