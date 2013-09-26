@@ -18,7 +18,7 @@ function setUp() {
 
 function test_bagrant_build() {
   bagrant_build >/dev/null
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

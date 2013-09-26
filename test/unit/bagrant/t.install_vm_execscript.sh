@@ -20,7 +20,7 @@ function tearDown() {
 
 function test_install_vm_execscript() {
   install_vm_execscript ${vmexecscript_path}
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

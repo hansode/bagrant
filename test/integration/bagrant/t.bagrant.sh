@@ -25,16 +25,16 @@ function tearDown() {
 
 function test_bagrant() {
   bagrant_cli init
-  assertEquals $? 0
+  assertEquals 0 $?
 
   bagrant_cli build
-  assertEquals $? 0
+  assertEquals 0 $?
 
   bagrant_cli up
-  assertEquals $? 0
+  assertEquals 0 $?
 
   bagrant_cli halt
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

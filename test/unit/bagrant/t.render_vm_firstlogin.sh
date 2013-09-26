@@ -14,7 +14,7 @@
 
 function test_render_vm_firstlogin() {
   render_vm_firstlogin >/dev/null
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

@@ -16,7 +16,7 @@ function test_hypervisor_controller_path() {
   hypervisor=kvm
 
   [[ -f $(hypervisor_controller_path) ]]
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

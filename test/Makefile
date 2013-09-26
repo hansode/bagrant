@@ -6,4 +6,7 @@ unit:
 integration:
 	(cd $@ && make)
 
-.PHONY: unit integration
+acceptance:
+	(cd $@ && make)
+
+.PHONY: unit integration acceptance

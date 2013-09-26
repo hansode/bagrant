@@ -14,7 +14,7 @@
 
 function test_render_vm_xpart() {
   render_vm_xpart | egrep -q -w ^root
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

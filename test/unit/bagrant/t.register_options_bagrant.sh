@@ -14,7 +14,7 @@
 
 function test_register_options_bagrant() {
   register_options_bagrant
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

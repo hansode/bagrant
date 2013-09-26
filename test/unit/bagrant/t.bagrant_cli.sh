@@ -14,7 +14,7 @@
 
 function test_bagrant_cli() {
   bagrant_cli box >/dev/null
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2

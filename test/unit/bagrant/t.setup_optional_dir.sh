@@ -23,7 +23,7 @@ function tearDown() {
 
 function test_setup_optional_dir() {
   setup_optional_dir
-  assertEquals $? 0
+  assertEquals 0 $?
 }
 
 ## shunit2
